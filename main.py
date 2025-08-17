@@ -1,4 +1,15 @@
 import random
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument("--word", metavar="word", required=True)
+
+parser.add_argument("--text_path", metavar="text_path", required=True)
+
+args = parser.parse_args()
+
+text_path = args.text_path
 
 
 def freq_next_word(word, text_array):
@@ -10,9 +21,9 @@ def freq_next_word(word, text_array):
     return most_freq_word
 
 
-text = open("corpus.txt", "r")
+text = open(text_path, "r")
 text_array = text.read().lower().replace(".", "").replace(",", "").split(" ")
-word = "organize"  # testing
+word = args.word
 count = 0
 
 while count < 1000:
